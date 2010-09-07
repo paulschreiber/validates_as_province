@@ -1,0 +1,43 @@
+validates_as_province
+=====================
+
+Strict validation module for provinces (and states). Requires the carmen gem:
+	http://github.com/jim/carmen
+
+= General usage
+
+== Installation
+
+You can install the plugin the traditional way. Go to your application root
+and do:
+
+  script/plugin install git://github.com/paulschreiber/validates_as_province.git
+
+== Validate your model attributes
+
+Example:
+
+There are three ways to specify the country:
+ (1) Pass the country name in as a string parameter (:country => "CA")
+ class Person < ActiveRecord::Base
+   validates_as_province :province, :country => "CA", :allow_blank => true
+ end
+
+ (2) Create an attribute (country field) named foo in your object, and pass in a reference to foo:
+ class Person < ActiveRecord::Base
+   validates_as_province :province, :country => :foo
+ end
+
+ (3) Create an attribute named country it in your object, i.e. Person#country
+     i.e. country is the default name for your country field, and the validator tries that automatically
+
+ class Person < ActiveRecord::Base
+   validates_as_province :province
+ end
+
+The :set parameter tells the validator to reformat the province number (change punctuation and spacing) in to a standard format.
+
+
+= License
+
+Copyright (c) 2010 Paul Schreiber, released under the MIT license
