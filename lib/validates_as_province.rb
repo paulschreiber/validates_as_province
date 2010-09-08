@@ -1,7 +1,6 @@
 module ActiveRecord
   module Validations
     module ClassMethods
-      require "carmen"
 
       def validates_as_province(*args)        
         configuration = { :message => ActiveRecord::Errors.default_error_messages[:invalid],
