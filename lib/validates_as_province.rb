@@ -3,7 +3,7 @@ module ActiveRecord
     module ClassMethods
 
       def validates_as_province(*args)        
-        configuration = { :message => ActiveRecord::Errors.default_error_messages[:invalid],
+        configuration = { :message => I18n.translate('activerecord.errors.messages.invalid'),
                           :on => :save, :with => nil
                         }
         configuration.update(args.pop) if args.last.is_a?(Hash)
