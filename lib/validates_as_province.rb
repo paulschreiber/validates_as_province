@@ -3,9 +3,7 @@ module ActiveRecord
     module ClassMethods
 
       def validates_as_province(*args)        
-        configuration = { :message => I18n.translate('activerecord.errors.messages.invalid'),
-                          :on => :save, :with => nil
-                        }
+        configuration = { :on => :save, :with => nil }
         configuration.update(args.pop) if args.last.is_a?(Hash)
 
         validates_each(args, configuration) do |record, attr_name, value|
@@ -26,7 +24,11 @@ module ActiveRecord
           value ||= ''
 
           unless (configuration[:allow_blank] && value.blank?) || current_province_list.include?(value)
-            record.errors.add(attr_name, configuration[:message])
+            message = I18n.t("activerecord.errors.models.#{name.underscore}.attributes.#{attr_name}.invalid", 
+                                          :default => [:"activerecord.errors.models.#{name.underscore}.invalid", 
+                                                      configuration[:message],
+                                                      :'activerecord.errors.messages.invalid'])
+            record.errors.add(attr_name, message)
           end
         end
       end # validates_as_province
