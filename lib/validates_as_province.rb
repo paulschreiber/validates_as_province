@@ -18,6 +18,7 @@ module ActiveRecord
           end
           
           next unless country          
+          next unless Carmen::states?(country)
           current_province_list = Carmen::state_codes(country)
           next unless current_province_list
 
