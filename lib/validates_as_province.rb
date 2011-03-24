@@ -3,7 +3,7 @@ module ActiveRecord
     module ClassMethods
 
       def validates_as_province(*args)        
-        configuration = { :on => :save, :with => nil }
+        configuration = { :with => nil }
         configuration.update(args.pop) if args.last.is_a?(Hash)
 
         validates_each(args, configuration) do |record, attr_name, value|
