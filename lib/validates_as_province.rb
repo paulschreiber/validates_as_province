@@ -26,8 +26,7 @@ module ActiveRecord
 
           unless (configuration[:allow_blank] && value.blank?) || current_province_list.include?(value)
             message = I18n.t("activerecord.errors.models.#{name.underscore}.attributes.#{attr_name}.invalid", 
-                                          :default => [:"activerecord.errors.models.#{name.underscore}.invalid", 
-                                                      configuration[:message],
+                                          :default => [configuration[:message],
                                                       :'activerecord.errors.messages.invalid'])
             record.errors.add(attr_name, message)
           end
