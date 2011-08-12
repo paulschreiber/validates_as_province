@@ -2,7 +2,7 @@ validates_as_province
 =====================
 
 Strict validation module for provinces (and states). Requires the carmen gem:
-	http://github.com/jim/carmen
+  http://github.com/jim/carmen
 
 = General usage
 
@@ -41,13 +41,13 @@ The :set parameter tells the validator to reformat the province number (change p
 You should provide localization files to display the error messages. In your app, create config/locales/en.yml (substitute en for the language you use).
 
 en:
-	activerecord:
-		errors:
-			models:
-				model_name_here:
-					attributes:
-						attribute_name_here:
-							invalid: "select a province"
+  activerecord:
+    errors:
+      models:
+        model_name_here:
+          attributes:
+            attribute_name_here:
+              invalid: "select a province"
 
 = License
 
